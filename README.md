@@ -1,5 +1,10 @@
-TP Final
+TP Final de Adapatación del Ambiente de trabajo - 6to Informática - IPS
 
-[![Coverage Status](https://coveralls.io/repos/github/dagostinoips/TpFinal2017/badge.svg?branch=master)](https://coveralls.io/github/dagostinoips/TpFinal2017?branch=master)
+Integrantes:
+Herrera, Juan Santiago
+Teves, Ciro Emanuel
 
-[![Build Status](https://travis-ci.org/dagostinoips/TpFinal2017.svg?branch=master)](https://travis-ci.org/dagostinoips/TpFinal2017)
+
+[![Coverage Status](https://coveralls.io/repos/github/LordRegginald/TpFinal2017/badge.svg?branch=master)](https://coveralls.io/github/LordRegginald/TpFinal2017?branch=master)
+
+[![Build Status](https://travis-ci.org/LordRegginald/TpFinal2017.svg?branch=master)](https://travis-ci.org/LordRegginald/TpFinal2017)
