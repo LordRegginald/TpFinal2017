@@ -5,9 +5,9 @@ namespace TpFinal;
 class Viaje {
     protected $tipo, $monto, $transporte, $fecha_y_hora;
 
-    public function __construct (Transporte $transporte) {
+    public function __construct ($transporte, $monto) {
     $this->tipo=$tipo;
-    $this->monto=$transporte->boleto_normal["normal"];
+    $this->monto=$monto;
     $this->transporte=$transporte;
     $this->fecha_y_hora = time();
     }
