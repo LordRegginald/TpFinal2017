@@ -11,9 +11,10 @@ class Tarjeta {
         if('Colectivo' == get_tipo($transporte)){
             $viajes = viajesRealizados();
             if($viajes == []){
-                $viaje = new Viaje($transporte);
+                $monto = $transporte->boleto_normal["normal"];
+                $viaje = new Viaje($transporte , $monto);
                 $this->viajes_realizados[] = $viaje;
-                $this->saldo_actual = $this->saldo_actual - $transporte->boleto_normal["normal"];
+                $this->saldo_actual = $this->saldo_actual - $monto;
             } else {
                 $ultimo = end($viajes);}
         
