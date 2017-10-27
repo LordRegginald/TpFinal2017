@@ -7,9 +7,18 @@ include 'Viaje.php';
 class Tarjeta {
     protected $transporte, $fecha_y_hora, $monto, $saldoactual, $viajes_realizados;
 
-    public function pagar(Transporte $transporte, $fecha_y_hora) {
+    public function pagar(Transporte $transporte) {
         if('Colectivo' == get_tipo($transporte)){
-            
+            $viajes = viajesRealizados();
+            if($viajes == []){
+                $viaje = new Viaje($transporte);
+                $this->viajes_realizados[] = $viaje;
+                $this->saldo_actual = $this->saldo_actual - $transporte->boleto_normal["normal"];
+            } else {
+                $ultimo = end($viajes);}
+        
+        } else {
+        
         }
         
     };
