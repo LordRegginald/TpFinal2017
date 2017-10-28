@@ -1,8 +1,11 @@
-TP Final de Adapatación del Ambiente de trabajo - 6to Informática - IPS
+Trabajo Práctico Final de Adapatación del Ambiente de trabajo - 6to Informática - IPS
 
 Integrantes:
-Herrera, Juan Santiago | Teves, Ciro Emanuel
+	Herrera, Juan Santiago	(@jsherrera)
+	Teves, Ciro Emanuel	(@LordRegginald)
 
-[![Coverage Status](https://coveralls.io/repos/github/LordRegginald/TpFinal2017/badge.svg?branch=master)](https://coveralls.io/github/LordRegginald/TpFinal2017?branch=master)
+Estándar PHP: PSR-2
 
-[![Build Status](https://travis-ci.org/LordRegginald/TpFinal2017.svg?branch=master)](https://travis-ci.org/LordRegginald/TpFinal2017)
+[![Coverage Status](https://coveralls.io/repos/github/CDTux/TpFinal2017/badge.svg?branch=master&service=github)](https://coveralls.io/github/CDTux/TpFinal2017?branch=master)
+
+[![Build Status](https://travis-ci.org/CDTux/TpFinal2017.svg?branch=master)](https://travis-ci.org/CDTux/TpFinal2017)
