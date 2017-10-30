@@ -1,6 +1,6 @@
 <?php
 
-include 'Viaje.php';
+require 'Viaje.php';
 
 namespace TpFinal;
 
