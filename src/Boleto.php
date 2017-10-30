@@ -1,57 +1,93 @@
 <?php
 
-include 'Viaje.php';
-
 namespace TpFinal;
 
-class Boleto
+include 'Viaje.php';
+include 'Boleto.php';
+
+class Tarjeta
 {
-    protected $tipos_boleto = [
-        'Normal',
-        'Plus',
-        'Medio',
-        'Bicicleta',
-    ];
+    protected $transporte, $fecha_y_hora, $monto, $saldo, $viajes_realizados, $viajes_plus;
 
-    protected $tipo, $saldo, $id, $linea;
-
-    public function __construct($tipo, $saldo, $id, $linea)
-    {
-        $this->tipo = $tipos_boleto;
-        if(in_array($tipo, $this->tipos_boleto) == false) {
-            throw new Exception("No es un tipo de boleto valido.");
-        }
-        $this->saldo = $saldo;
+    public function __construct($id) {
         $this->id = $id;
-        $this->linea = $linea;
+        $this->saldo = $this->viajes_plus = 0;
+        $this->viajes_realizados = array();
     }
 
-    public function transbordo(Transporte $transporte) {
-        if (date() > date('Y-m-d H:i:s', strtotime('monday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('friday this week'), 22:00:00) || date() > date('Y-m-d H:i:s', strtotime('saturday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('saturday this week', 14:00:00))) {
-            $flag = ($this->get_fecha_y_hora() + 3600) <= time() && $this->linea != $linea) ? true : false;
-            return $flag;
-        } elseif (date() > date('Y-m-d H:i:s', strtotime('saturday this week', 14:00:00)) && date() < date('Y-m-d H:i:s', strtotime('saturday this week'), 22:00:00) || date() > date('Y-m-d H:i:s', strtotime('sunday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('sunday this week', 22:00:00))){
-                $flag = ($this->get_fecha_y_hora() + 5400) <= time() && $this->linea != $linea) ? true : false;
-                return $flag;
-        } elseif (date() > date('Y-m-d H:i:s', strtotime(22:00:00)) && date() < date('Y-m-d H:i:s', strtotime(06:00:00))) {
-                $flag = ($this->get_fecha_y_hora() + 5400) <= time() && $this->linea != $linea) ? true : false;
-                return $flag;
+    public function pagar(Transporte $transporte, $fecha_y_hora, $tipo) {
+        if ('Colectivo' == get_tipo($transporte)){
+            if (! in_array($tipo, $this->tipos_boletos)) {
+            return;
         }
-    }
-
-    public function descontar_o_plus() {
-        if (2 >= $this->viajes_plus ) {
-            $this->saldo -= $monto;
-            if ( 0 > $this->saldo_acual ) {
-                $this->viajes_plus++;
-            }
-            return true;
+        $array_viajes = $this->viajes_realizados();
+        $ultimo_viaje = end($array_viajes);
+        if ($transporte instanceof Colectivo) {
+            if (false == $ultimo_viaje) {
+                $monto = $transporte->get_normal($tipo);
+                $viaje = new Viaje($transporte, $monto);
+                $this->viajes_realizados[] = $viaje;
+                $this->descontar_o_plus($monto);
+                get_boleto($tipo);
+            } elseif ($ultimo_viaje->trasbordo($transporte)) {
+                $monto = $transporte->get_trasbordo($tipo);
+                $viaje = new Viaje($transporte, $monto);
+                $this->viajes_realizados[] = $viaje;
+                $this->descontar_o_plus($monto);
+                get_boleto($tipo);
+                } else {
+                    $monto = $transporte->get_normal($tipo);
+                    $viaje = new Viaje($transporte, $monto);
+                    $this->viajes_realizados[] = $viaje;
+                    $this->descontar_o_plus($monto);
+                    get_boleto($tipo);
+                }
         } else {
-            return false;
+            $flag = 1;
+            foreach($this->get_viajes_realizados() as $viaje) { 
+                if ('En bicicleta' == $viaje->get_tipo() && ($viaje->get_fecha_y_hora() + 86400) <= time()) {
+                    $flag = 0;
+                    break;
+                }
+            }
+            if ($flag == 1) {
+                $monto = $transporte->get_boleto_bici();
+                $viaje = new Viaje($transporte, $monto);
+                $this->viajes_realizados[] = $viaje;
+                $this->descontar_o_plus($monto);
+                get_boleto($tipo);
+            } else {
+                $monto = 0.0;
+                $viaje = new Viaje($transporte, $monto);
+                $this->viajes_realizados[] = $viaje;
+                $this->descontar_o_plus($monto);
+                get_boleto($tipo);
+            }
         }
+        }
+    };
+
+    public function recargar($monto) {
+        if( $monto == 332) {
+            $this->saldo += 388;
+            print("\nSe acredito tu recarga de $" . $this->monto . " a la tarjeta más una suma de $56.");
+        } else {
+            if ($monto == 500) {
+                $this->saldo += 652;
+                print("\nSe acredito tu recarga de $" . $this->monto . " a la tarjeta más una suma de $140.");
+            }
+        } else {
+            $this->saldo += $monto;
+            print("\nSe acredito tu recarga de $" . $this->monto . " a la tarjeta.");
+        }
+        return 0;
     }
 
-    public function get_boleto($tipo) {
-        print("\n" . $this->get_fecha_y_hora() . "\n" . $this->tipo . "\n" . $this->saldo . "\n" . $this->id . "\n" $this->linea);
+    public function get_saldo() {
+        print("\nSu saldo actual es de $" . $this->saldo_actual);
     }
+
+    public function get_viajes_realizados() {
+        return $this->viajes_realizados;
+    };
 }
