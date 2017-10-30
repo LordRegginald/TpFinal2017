@@ -2,14 +2,15 @@
 
 namespace TpFinal;
 
-class Viaje {
+class Viaje
+{
     protected $tipo, $monto, $transporte, $fecha_y_hora;
 
-    public function __construct ($transporte, $monto) {
-    $this->tipo=$tipo;
-    $this->monto=$monto;
-    $this->transporte=$transporte;
-    $this->fecha_y_hora = time();
+    public function __construct ($monto, Transporte $transporte) {
+        $this->tipo = ('Colectivo' == get_class($transporte)) ? 'En colectivo' : 'En bicicleta';
+        $this->monto = $monto;
+        $this->transporte = $transporte;
+        $this->fecha_y_hora = time();
     }
 
     public function get_tipo() {
