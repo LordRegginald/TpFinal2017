@@ -9,12 +9,13 @@ class Tarjeta
 {
     protected $transporte, $fecha_y_hora, $monto, $saldo, $viajes_realizados, $viajes_plus;
 
-    public function __construct() {
+    public function __construct($id) {
+        $this->id = $id;
         $this->saldo = $this->viajes_plus = 0;
-        $this->viajes = array();
+        $this->viajes_realizados = array();
     }
 
-    public function pagar(Transporte $transporte, $fecha_y_hora) {
+    public function pagar(Transporte $transporte, $fecha_y_hora, $tipo) {
         if ('Colectivo' == get_tipo($transporte)){
             if (! in_array($tipo, $this->tipos_boletos)) {
             return;
