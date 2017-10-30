@@ -1,15 +1,32 @@
 <?php
 
-class Colectivo {
-	public $boleto_normal = [
-		'normal'	=>	9.70,
-		'estudiante'	=>	4.85,];
-	public $boleto_de_trasbordo = [
-		'normal'	=>	2.64,
-		'estudiante'	=>	1.32,];
-	public $linea;
+namespace TpFinal;
 
-	public function __construct( $linea ) {
-		$this->linea = $linea;
-	}
+class Colectivo
+{
+    protected $montos_normales = array(
+        'Normal' => 9.70,
+        'Medio' => 4.85,
+    );
+    protected $montos_de_trasbordo = array(
+        'Normal' => 2.64,
+        'Medio' => 1.32,
+    );
+    protected $linea;
+
+    public function __construct($linea) {
+        $this->linea = $linea;
+    }
+
+    public function get_linea() {
+        return $this->linea;
+    }
+	
+    public function get_normal($tipo) {
+        return $this->montos_normales[$tipo];
+    }
+
+    public function get_trasbordo($tipo_boleto) {
+        return $this->montos_de_trasbordo[$tipo];
+    }
 }
