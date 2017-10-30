@@ -2,8 +2,9 @@
 
 namespace TpFinal;
 
-include 'Viaje.php';
-include 'Boleto.php';
+require 'Viaje.php';
+require 'Boleto.php';
+require 'Transporte.php';
 
 class Tarjeta
 {
