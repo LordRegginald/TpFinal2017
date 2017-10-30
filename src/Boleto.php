@@ -10,13 +10,13 @@ class Boleto
         'Normal',
         'Plus',
         'Medio',
+        'Bicicleta',
     ];
 
-    protected $fecha, $tipo, $saldo, $id, $linea;
+    protected $tipo, $saldo, $id, $linea;
 
-    public function __construct($fecha, $tipo, $saldo, $id, $linea)
+    public function __construct($tipo, $saldo, $id, $linea)
     {
-        $this->fecha = date("F j, Y");
         $this->tipo = $tipos_boleto;
         if(in_array($tipo, $this->tipos_boleto) == false) {
             throw new Exception("No es un tipo de boleto valido.");
@@ -26,20 +26,32 @@ class Boleto
         $this->linea = $linea;
     }
 
-    public function transbordo() {
-        if(date() > date('Y-m-d H:i:s', strtotime('monday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('friday this week'), 22:00:00) || date() > date('Y-m-d H:i:s', strtotime('saturday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('saturday this week', 14:00:00))) {
+    public function transbordo(Transporte $transporte) {
+        if (date() > date('Y-m-d H:i:s', strtotime('monday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('friday this week'), 22:00:00) || date() > date('Y-m-d H:i:s', strtotime('saturday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('saturday this week', 14:00:00))) {
             $flag = ($this->get_fecha_y_hora() + 3600) <= time() && $this->linea != $linea) ? true : false;
             return $flag;
-        } elseif(date() > date('Y-m-d H:i:s', strtotime('saturday this week', 14:00:00)) && date() < date('Y-m-d H:i:s', strtotime('saturday this week'), 22:00:00) || date() > date('Y-m-d H:i:s', strtotime('sunday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('sunday this week', 22:00:00))){
+        } elseif (date() > date('Y-m-d H:i:s', strtotime('saturday this week', 14:00:00)) && date() < date('Y-m-d H:i:s', strtotime('saturday this week'), 22:00:00) || date() > date('Y-m-d H:i:s', strtotime('sunday this week', 06:00:00)) && date() < date('Y-m-d H:i:s', strtotime('sunday this week', 22:00:00))){
                 $flag = ($this->get_fecha_y_hora() + 5400) <= time() && $this->linea != $linea) ? true : false;
                 return $flag;
-        } elseif(date() > date('Y-m-d H:i:s', strtotime(22:00:00)) && date() < date('Y-m-d H:i:s', strtotime(06:00:00))) {
+        } elseif (date() > date('Y-m-d H:i:s', strtotime(22:00:00)) && date() < date('Y-m-d H:i:s', strtotime(06:00:00))) {
                 $flag = ($this->get_fecha_y_hora() + 5400) <= time() && $this->linea != $linea) ? true : false;
                 return $flag;
         }
     }
 
-    public function get_boleto() {
-        print("\n" . $this->fecha . "\n" . $this->tipo . "\n" . $this->saldo . "\n" . $this->id . "\n" $this->linea);
+    public function descontar_o_plus() {
+        if (2 >= $this->viajes_plus ) {
+            $this->saldo -= $monto;
+            if ( 0 > $this->saldo_acual ) {
+                $this->viajes_plus++;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function get_boleto($tipo) {
+        print("\n" . $this->get_fecha_y_hora() . "\n" . $this->tipo . "\n" . $this->saldo . "\n" . $this->id . "\n" $this->linea);
     }
 }
