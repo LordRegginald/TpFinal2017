@@ -12,16 +12,21 @@ class Colectivo
         'Normal' => 2.64,
         'Medio' => 1.32,
     );
-    protected $linea;
+    protected $linea, $empresa;
 
-    public function __construct($linea) {
+    public function __construct($linea, $empresa) {
         $this->linea = $linea;
+        $this->empresa = $empresa;
     }
 
     public function get_linea() {
         return $this->linea;
     }
-	
+
+    public function get_empresa() {
+        return $this->empresa;
+    }
+
     public function get_normal($tipo) {
         return $this->montos_normales[$tipo];
     }
