@@ -93,7 +93,7 @@ class Tarjeta
     public function descontar_o_plus($monto) {
         if (2 >= $this->viajes_plus ) {
             $this->saldo -= $monto;
-            if ( 0 > $this->saldo_acual ) {
+            if ( 0 > $this->saldo ) {
                 $this->viajes_plus++;
             }
             return true;
