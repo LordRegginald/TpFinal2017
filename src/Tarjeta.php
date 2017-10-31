@@ -17,10 +17,9 @@ class Tarjeta
     }
 
     public function pagar(Transporte $transporte, $fecha_y_hora, $tipo) {
-        if ('Colectivo' == get_tipo($transporte)){
-            if (! in_array($tipo_boleto, $this->tipos_boletos)) {
+
+        if (! in_array($tipo_boleto, $this->tipos_boletos)) {
             return;
-            }
         }
         $array_viajes = $this->viajes_realizados();
         $ultimo_viaje = end($array_viajes);
