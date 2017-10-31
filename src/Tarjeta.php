@@ -20,6 +20,7 @@ class Tarjeta
         if ('Colectivo' == get_tipo($transporte)){
             if (! in_array($tipo, $this->tipos_boletos)) {
             return;
+            }
         }
         $array_viajes = $this->viajes_realizados();
         $ultimo_viaje = end($array_viajes);
