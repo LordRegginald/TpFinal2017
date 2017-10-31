@@ -13,12 +13,12 @@ class Boleto
         'Bicicleta',
     ];
 
-    protected $tipo, $saldo, $id, $linea;
+    protected $tipo_boleto, $saldo, $id, $linea;
 
-    public function __construct($tipo, $saldo, $id, $linea)
+    public function __construct($tipo_boleto, $saldo, $id, $linea)
     {
-        $this->tipo = $tipos_boleto;
-        if(in_array($tipo, $this->tipos_boleto) == false) {
+        $this->tipo_boleto = $tipos_boleto;
+        if(in_array($tipo_boleto, $this->tipos_boleto) == false) {
             throw new Exception("No es un tipo de boleto valido.");
         }
         $this->saldo = $saldo;
@@ -40,7 +40,7 @@ class Boleto
     }
     
     public function get_tipo(Transporte $transporte) {
-        return $this->tipo;
+        return $this->tipo_boleto;
     }
 
     public function descontar_o_plus() {
