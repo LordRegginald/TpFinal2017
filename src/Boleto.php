@@ -55,7 +55,7 @@ class Boleto
         }
     }
 
-    public function get_boleto($tipo) {
-        print("\n" . $this->get_fecha_y_hora() . "\n" . $this->tipo . "\n" . $this->saldo . "\n" . $this->id . "\n" $this->linea);
+    public function get_boleto($tipo_boleto) {
+        print("\n" . $this->get_fecha_y_hora() . "\n" . $this->tipo_boleto . "\n" . $this->saldo . "\n" . $this->id . "\n" $this->linea);
     }
 }
