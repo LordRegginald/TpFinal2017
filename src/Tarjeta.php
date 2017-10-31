@@ -89,4 +89,16 @@ class Tarjeta
     public function get_viajes_realizados() {
         return $this->viajes_realizados;
     }
+    
+    public function descontar_o_plus() {
+        if (2 >= $this->viajes_plus ) {
+            $this->saldo -= $monto;
+            if ( 0 > $this->saldo_acual ) {
+                $this->viajes_plus++;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
