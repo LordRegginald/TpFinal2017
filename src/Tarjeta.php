@@ -27,19 +27,19 @@ class Tarjeta
         if ($transporte instanceof Colectivo) {
             if (false == $ultimo_viaje) {
                 $monto = $transporte->get_normal($tipo_boleto);
-                $viaje = new Viaje($transporte, $monto);
+                $viaje = new Viaje($monto, $transporte);
                 $this->viajes_realizados[] = $viaje;
                 $this->descontar_o_plus($monto);
                 get_boleto($tipo_boleto);
             } elseif ($ultimo_viaje->trasbordo($transporte)) {
                 $monto = $transporte->get_trasbordo($tipo_boleto);
-                $viaje = new Viaje($transporte, $monto);
+                $viaje = new Viaje($monto, $transporte);
                 $this->viajes_realizados[] = $viaje;
                 $this->descontar_o_plus($monto);
                 get_boleto($tipo_boleto);
                 } else {
                     $monto = $transporte->get_normal($tipo_boleto);
-                    $viaje = new Viaje($transporte, $monto);
+                    $viaje = new Viaje($monto, $transporte);
                     $this->viajes_realizados[] = $viaje;
                     $this->descontar_o_plus($monto);
                     get_boleto($tipo_boleto);
@@ -54,13 +54,13 @@ class Tarjeta
             }
             if ($flag == 1) {
                 $monto = $transporte->get_boleto_bici();
-                $viaje = new Viaje($transporte, $monto);
+                $viaje = new Viaje($monto, $transporte);
                 $this->viajes_realizados[] = $viaje;
                 $this->descontar_o_plus($monto);
                 get_boleto($tipo_boleto);
             } else {
                 $monto = 0.0;
-                $viaje = new Viaje($transporte, $monto);
+                $viaje = new Viaje($monto, $transporte);
                 $this->viajes_realizados[] = $viaje;
                 $this->descontar_o_plus($monto);
                 get_boleto($tipo_boleto);
