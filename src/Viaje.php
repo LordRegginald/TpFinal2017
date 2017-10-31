@@ -13,7 +13,7 @@ class Viaje
         $this->fecha_y_hora = time();
     }
     
-    public function transbordo(Transporte $transporte) {
+    public function trasbordo(Transporte $transporte) {
         $flag = (($this->get_fecha_y_hora() + 3600) <= time() && $this->linea != $linea) ? true : false;
         return $flag;
     }
