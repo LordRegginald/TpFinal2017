@@ -39,7 +39,7 @@ class Boleto
         }
     }
     
-    public function get_tipo(Transporte $transporte) {
+    public function get_tipo_boleto(Transporte $transporte) {
         return $this->tipo_boleto;
     }
 
