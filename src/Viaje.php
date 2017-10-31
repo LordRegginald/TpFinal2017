@@ -12,6 +12,19 @@ class Viaje
         $this->transporte = $transporte;
         $this->fecha_y_hora = time();
     }
+    
+    public function transbordo(Transporte $transporte) {
+    if (date() > date('Y-m-d H:i', strtotime('monday this week', 06:00)) && date() < date('Y-m-d H:i', strtotime('friday this week'), 22:00) || date() > date('Y-m-d H:i', strtotime('saturday this week', 06:00)) && date() < date('Y-m-d H:i', strtotime('saturday this week', 14:00))) {
+        $flag = ($this->get_fecha_y_hora() + 3600) <= time() && $this->linea != $linea) ? true : false;
+        return $flag;
+    } elseif (date() > date('Y-m-d H:i', strtotime('saturday this week', 14:00)) && date() < date('Y-m-d H:i', strtotime('saturday this week'), 22:00) || date() > date('Y-m-d H:i', strtotime('sunday this week', 06:00)) && date() < date('Y-m-d H:i', strtotime('sunday this week', 22:00))){
+        $flag = ($this->get_fecha_y_hora() + 5400) <= time() && $this->linea != $linea) ? true : false;
+        return $flag;
+    } elseif (date() > date('Y-m-d H:i', strtotime(22:00)) && date() < date('Y-m-d H:i', strtotime(06:00))) {
+        $flag = ($this->get_fecha_y_hora() + 5400) <= time() && $this->linea != $linea) ? true : false;
+        return $flag;
+    }
+    }
 
     public function get_tipo() {
        return $this->tipo;
