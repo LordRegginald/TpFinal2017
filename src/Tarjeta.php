@@ -69,14 +69,12 @@ class Tarjeta
     }
 
     public function recargar($monto) {
-        if( $monto == 332) {
+        if($monto == 332) {
             $this->saldo += 388;
             print("\nSe acredito tu recarga de $" . $this->monto . " a la tarjeta más una suma de $56.");
-        } else {
-            if ($monto == 500) {
+        } elseif ($monto == 500) {
                 $this->saldo += 652;
                 print("\nSe acredito tu recarga de $" . $this->monto . " a la tarjeta más una suma de $140.");
-            }
         } else {
             $this->saldo += $monto;
             print("\nSe acredito tu recarga de $" . $this->monto . " a la tarjeta.");
