@@ -2,7 +2,7 @@
 
 namespace TpFinal;
 
-class Colectivo
+class Colectivo extends Transporte
 {
     protected $montos_normales = array(
         'Normal' => 9.70,
