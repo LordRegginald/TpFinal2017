@@ -38,6 +38,10 @@ class Boleto
                 return $flag;
         }
     }
+    
+    public function get_tipo(Transporte $transporte) {
+        return $this->tipo;
+    }
 
     public function descontar_o_plus() {
         if (2 >= $this->viajes_plus ) {
