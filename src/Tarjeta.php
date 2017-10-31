@@ -90,7 +90,7 @@ class Tarjeta
         return $this->viajes_realizados;
     }
     
-    public function descontar_o_plus() {
+    public function descontar_o_plus($monto) {
         if (2 >= $this->viajes_plus ) {
             $this->saldo -= $monto;
             if ( 0 > $this->saldo_acual ) {
