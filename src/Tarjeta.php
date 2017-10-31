@@ -18,7 +18,7 @@ class Tarjeta
 
     public function pagar(Transporte $transporte, $fecha_y_hora, $tipo) {
         if ('Colectivo' == get_tipo($transporte)){
-            if (! in_array($tipo, $this->tipos_boletos)) {
+            if (! in_array($tipo_boleto, $this->tipos_boletos)) {
             return;
             }
         }
@@ -26,23 +26,23 @@ class Tarjeta
         $ultimo_viaje = end($array_viajes);
         if ($transporte instanceof Colectivo) {
             if (false == $ultimo_viaje) {
-                $monto = $transporte->get_normal($tipo);
+                $monto = $transporte->get_normal($tipo_boleto);
                 $viaje = new Viaje($transporte, $monto);
                 $this->viajes_realizados[] = $viaje;
                 $this->descontar_o_plus($monto);
-                get_boleto($tipo);
+                get_boleto($tipo_boleto);
             } elseif ($ultimo_viaje->trasbordo($transporte)) {
-                $monto = $transporte->get_trasbordo($tipo);
+                $monto = $transporte->get_trasbordo($tipo_boleto);
                 $viaje = new Viaje($transporte, $monto);
                 $this->viajes_realizados[] = $viaje;
                 $this->descontar_o_plus($monto);
-                get_boleto($tipo);
+                get_boleto($tipo_boleto);
                 } else {
-                    $monto = $transporte->get_normal($tipo);
+                    $monto = $transporte->get_normal($tipo_boleto);
                     $viaje = new Viaje($transporte, $monto);
                     $this->viajes_realizados[] = $viaje;
                     $this->descontar_o_plus($monto);
-                    get_boleto($tipo);
+                    get_boleto($tipo_boleto);
                 }
         } else {
             $flag = 1;
@@ -57,13 +57,13 @@ class Tarjeta
                 $viaje = new Viaje($transporte, $monto);
                 $this->viajes_realizados[] = $viaje;
                 $this->descontar_o_plus($monto);
-                get_boleto($tipo);
+                get_boleto($tipo_boleto);
             } else {
                 $monto = 0.0;
                 $viaje = new Viaje($transporte, $monto);
                 $this->viajes_realizados[] = $viaje;
                 $this->descontar_o_plus($monto);
-                get_boleto($tipo);
+                get_boleto($tipo_boleto);
             }
         }
     }
