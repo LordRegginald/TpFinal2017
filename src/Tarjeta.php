@@ -2,9 +2,9 @@
 
 namespace TpFinal;
 
-require 'Viaje.php';
-require 'Boleto.php';
-require 'Transporte.php';
+//require 'Viaje.php';
+//require 'Boleto.php';
+//require 'Transporte.php';
 
 class Tarjeta
 {
@@ -65,8 +65,6 @@ class Tarjeta
                 get_boleto($tipo);
             }
         }
-        }
-        
     };
 
     public function recargar($monto) {
