@@ -1,4 +1,4 @@
-Trabajo Práctico Final de Adapatación del Ambiente de trabajo - 6to Informática - IPS
+# Trabajo Práctico Final de Adapatación del Ambiente de trabajo - 6to Informática - IPS
 
 Integrantes:
 	Herrera, Juan Santiago	(@jsherrera)
