@@ -22,7 +22,7 @@ class Tarjeta
         if (! in_array($tipo_boleto, $this->tipos_boleto)) {
             return;
         }
-        $array_viajes = $this->viajes_realizados();
+        $array_viajes = $this->get_viajes_realizados();
         $ultimo_viaje = end($array_viajes);
         if ($transporte instanceof Colectivo) {
             if (false == $ultimo_viaje) {
