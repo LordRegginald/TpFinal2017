@@ -9,6 +9,7 @@ namespace TpFinal;
 class Tarjeta
 {
     protected $transporte, $fecha_y_hora, $monto, $saldo, $viajes_realizados, $viajes_plus;
+    protected $tipos_boleto = ["Normal", "Estudiante", "Bicicleta"];
 
     public function __construct($id) {
         $this->id = $id;
