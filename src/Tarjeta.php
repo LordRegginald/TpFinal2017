@@ -78,7 +78,7 @@ class Tarjeta
     }
 
     public function get_saldo() {
-        print("\nSu saldo actual es de $" . $this->saldo);
+        return $this->saldo;
     }
 
     public function get_viajes_realizados() {
