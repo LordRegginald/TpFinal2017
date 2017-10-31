@@ -2,7 +2,7 @@
 
 namespace TpFinal;
 
-class Bicicleta
+class Bicicleta extends Transporte
 {
     protected $tarifa_diaria = 14.55;
     protected $patente;
