@@ -65,7 +65,7 @@ class Tarjeta
                 get_boleto($tipo);
             }
         }
-    };
+    }
 
     public function recargar($monto) {
         if( $monto == 332) {
@@ -89,5 +89,5 @@ class Tarjeta
 
     public function get_viajes_realizados() {
         return $this->viajes_realizados;
-    };
+    }
 }
