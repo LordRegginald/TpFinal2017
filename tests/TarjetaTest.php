@@ -27,7 +27,7 @@ class EstacionTest extends TestCase
         $tarjeta = new Tarjeta(33333333);
         $tarjeta->recargar(332);
         $colectivo144Negro = new Colectivo("144 Negro", "Rosario Bus");
-        $tarjeta->pagar($colectivo144Negro, "2017/10/29 22:50", "Normal");
+        $tarjeta->pagar($colectivo144Negro, "2017-10-29 22:50", "Normal");
         $this->assertEquals($tarjeta->get_saldo(), 328.3);
     }
 
@@ -35,8 +35,8 @@ class EstacionTest extends TestCase
         $tarjeta = new Tarjeta(44444444);
         $tarjeta->recargar(50);
         $colectivo135 = new Colectivo("135", "Rosario Bus");
-        $tarjeta->pagar($colectivo135, "2017/10/30 15:34", "Normal");
-        $tarjeta->pagar($colectivo135, "2017/10/30 18:36", "Normal");
+        $tarjeta->pagar($colectivo135, "2017-10-30 15:34", "Normal");
+        $tarjeta->pagar($colectivo135, "2017-10-30 18:36", "Normal");
         $this->assertEquals($tarjeta->get_saldo(), 30.6);
     }
 
@@ -45,8 +45,8 @@ class EstacionTest extends TestCase
         $tarjeta->recargar(50);
         $colectivo138 = new Colectivo("138", "Rosario Bus");
         $colectivo142Negro = new Colectivo("142 Negro", "Rosario Bus");
-        $tarjeta->pagar($colectivo138, "2017/10/30 23:15", "Normal");
-        $tarjeta->pagar($colectivo142Negro, "2017/10/30 23:37", "Normal");
+        $tarjeta->pagar($colectivo138, "2017-10-30 23:15", "Normal");
+        $tarjeta->pagar($colectivo142Negro, "2017-10-30 23:37", "Normal");
         $this->assertEquals($tarjeta->get_saldo(), 37.66);
     }
 
@@ -55,9 +55,9 @@ class EstacionTest extends TestCase
         $tarjeta->recargar(100);
         $colectivo138 = new Colectivo("138", "Rosario Bus");
         $colectivo142Negro = new Colectivo("142 Negro", "Rosario Bus");
-        $tarjeta->pagar($colectivo138, "2017/10/30 23:15", "Normal");
-        $tarjeta->pagar($colectivo142Negro, "2017/10/30 23:37", "Normal");
-        $tarjeta->pagar($colectivo142Negro, "2017/10/30 23:38", "Normal");
+        $tarjeta->pagar($colectivo138, "2017-10-30 23:15", "Normal");
+        $tarjeta->pagar($colectivo142Negro, "2017-10-30 23:37", "Normal");
+        $tarjeta->pagar($colectivo142Negro, "2017-10-30 23:38", "Normal");
         $this->assertEquals($tarjeta->get_saldo(), 77.96);
     }
 
@@ -65,7 +65,7 @@ class EstacionTest extends TestCase
         $tarjeta = new Tarjeta(77777777);
         $tarjeta->recargar(50);
         $bicicleta1234 = new Bicicleta("1234");
-        $tarjeta->pagar($bicicleta1234, "2017/10/30 12:23", "Bicicleta");
+        $tarjeta->pagar($bicicleta1234, "2017-10-30 12:23", "Bicicleta");
         $this->assertEquals($tarjeta->get_saldo(), 35.45);
     }
 
@@ -75,9 +75,9 @@ class EstacionTest extends TestCase
         $bicicleta1111 = new Bicicleta("1111");
         $bicicleta2222 = new Bicicleta("2222");
         $bicicleta3333 = new Bicicleta("3333");
-        $tarjeta->pagar($bicicleta1111, "2017/10/30 12:23", "Bicicleta");
-        $tarjeta->pagar($bicicleta2222, "2017/10/30 15:34", "Bicicleta");
-        $tarjeta->pagar($bicicleta3333, "2017/10/30 18:49", "Bicicleta");
+        $tarjeta->pagar($bicicleta1111, "2017-10-30 12:23", "Bicicleta");
+        $tarjeta->pagar($bicicleta2222, "2017-10-30 15:34", "Bicicleta");
+        $tarjeta->pagar($bicicleta3333, "2017-10-30 18:49", "Bicicleta");
         $this->assertEquals($tarjeta->get_saldo(), 35.45);   
     }
 }
