@@ -63,7 +63,7 @@ class EstacionTest extends TestCase
 
     public function test7() {
         $tarjeta = new Tarjeta(77777777);
-        tarjeta->recargar(50);
+        $tarjeta->recargar(50);
         $bicicleta1234 = new Bicicleta("1234");
         $tarjeta->pagar($bicicleta1234, "2017/10/30 12:23", "Bicicleta");
         $this->assertEquals($tarjeta->get_saldo(), 35.45);
@@ -71,7 +71,7 @@ class EstacionTest extends TestCase
 
     public function test8() {
         $tarjeta = new Tarjeta(88888888);
-        tarjeta->recargar(50);
+        $tarjeta->recargar(50);
         $bicicleta8008 = new Bicicleta("8008");
         $tarjeta->pagar($bicicleta1234, "2017/10/30 12:23", "Bicicleta");
         $tarjeta->pagar($bicicleta1234, "2017/10/30 15:34", "Bicicleta");
