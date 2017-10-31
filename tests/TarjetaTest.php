@@ -72,10 +72,12 @@ class EstacionTest extends TestCase
     public function test8() {
         $tarjeta = new Tarjeta(88888888);
         $tarjeta->recargar(50);
-        $bicicleta8008 = new Bicicleta("8008");
-        $tarjeta->pagar($bicicleta1234, "2017/10/30 12:23", "Bicicleta");
-        $tarjeta->pagar($bicicleta1234, "2017/10/30 15:34", "Bicicleta");
-        $tarjeta->pagar($bicicleta1234, "2017/10/30 18:49", "Bicicleta");
+        $bicicleta1111 = new Bicicleta("1111");
+        $bicicleta2222 = new Bicicleta("2222");
+        $bicicleta3333 = new Bicicleta("3333");
+        $tarjeta->pagar($bicicleta1111, "2017/10/30 12:23", "Bicicleta");
+        $tarjeta->pagar($bicicleta2222, "2017/10/30 15:34", "Bicicleta");
+        $tarjeta->pagar($bicicleta3333, "2017/10/30 18:49", "Bicicleta");
         $this->assertEquals($tarjeta->get_saldo(), 35.45);   
     }
 }
