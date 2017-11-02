@@ -32,6 +32,6 @@ class Colectivo extends Transporte
     }
 
     public function get_trasbordo($tipo_boleto) {
-        return $this->montos_de_trasbordo[$tipo];
+        return $this->montos_de_trasbordo[$tipo_boleto];
     }
 }
