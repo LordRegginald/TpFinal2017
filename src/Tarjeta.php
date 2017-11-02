@@ -44,7 +44,7 @@ class Tarjeta
         } else {
             $flag = 1;
             foreach($this->get_viajes_realizados() as $viaje) { 
-                if ('En bicicleta' == $viaje->get_tipo() && ($viaje->get_fecha_y_hora() + 86400) <= time()) {
+                if ('En bicicleta' == $viaje->get_tipo() && ($viaje->get_fecha_y_hora() + 86400) >= time()) {
                     $flag = 0;
                     break;
                 }
