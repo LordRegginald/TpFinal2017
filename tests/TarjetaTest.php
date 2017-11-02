@@ -20,7 +20,7 @@ class EstacionTest extends TestCase
     public function test2() {
         $tarjeta = new Tarjeta(22222222);
         $tarjeta->recargar(332);
-        $this->assertEquals($tarjeta->get_saldo(), 338.0);
+        $this->assertEquals($tarjeta->get_saldo(), 388.0);
     }
 
     public function test3() {
@@ -28,7 +28,7 @@ class EstacionTest extends TestCase
         $tarjeta->recargar(332);
         $colectivo144Negro = new Colectivo("144 Negro", "Rosario Bus");
         $tarjeta->pagar($colectivo144Negro, "2017-10-29 22:50", "Normal");
-        $this->assertEquals($tarjeta->get_saldo(), 328.3);
+        $this->assertEquals($tarjeta->get_saldo(), 378.3);
     }
 
     public function test4() {
@@ -47,7 +47,7 @@ class EstacionTest extends TestCase
         $colectivo142Negro = new Colectivo("142 Negro", "Rosario Bus");
         $tarjeta->pagar($colectivo138, "2017-10-30 23:15", "Normal");
         $tarjeta->pagar($colectivo142Negro, "2017-10-30 23:37", "Normal");
-        $this->assertEquals($tarjeta->get_saldo(), 37.66);
+        $this->assertEquals($tarjeta->get_saldo(), (50 - 9.7 - 2.64));
     }
 
     public function test6() {
