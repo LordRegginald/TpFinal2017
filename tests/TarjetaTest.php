@@ -85,7 +85,7 @@ class EstacionTest extends TestCase
         $tarjeta = new Tarjeta(88888888);
         $tarjeta->recargar(50);
         $colectivo138 = new Colectivo("138", "Rosario Bus");
-        $tarjeta->pagar($colectivo138, "2017-10-30 23:15", "Estudiante");
+        $tarjeta->pagar($colectivo138, "2017-10-30 23:15", "Medio");
         $this->assertEquals($tarjeta->get_saldo(), 50-4.85);
 }
 }
