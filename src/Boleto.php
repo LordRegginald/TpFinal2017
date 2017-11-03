@@ -1,4 +1,5 @@
 <?php
+/*
 
 //require 'Viaje.php';
 
@@ -46,3 +47,4 @@ class Boleto
         print("\n" . $this->get_fecha_y_hora() . "\n" . $this->tipo_boleto . "\n" . $this->saldo . "\n" . $this->id . "\n" $this->linea);
     }
 }
+*/
