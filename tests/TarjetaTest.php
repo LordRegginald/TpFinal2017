@@ -28,7 +28,7 @@ class EstacionTest extends TestCase
         $tarjeta->recargar(332);
         $colectivo144Negro = new Colectivo("144 Negro", "Rosario Bus");
         $tarjeta->pagar($colectivo144Negro, "2017-10-29 22:50", "Normal");
-        $this->assertEquals($tarjeta->get_saldo(), 388-$colectivo144Negro->get_normal(""));
+        $this->assertEquals($tarjeta->get_saldo(), (388 - 9.7));
     }
 
     public function test4() {
